@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes demandes - SmartCampus AI</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1 class="title"><a href="/" class="home-link">SmartCampus AI</a></h1>
+    <p class="subtitle">Mes demandes</p>
+  </header>
+
+  <main class="main main-wide">
+    <div class="panel">
+      <p class="hint">Suivi de vos signalements et de leur avancement (US-02).</p>
+      <div id="liste" class="ticket-list">Chargement...</div>
+    </div>
+
+    <!-- Detail d'un ticket (affiche au clic) -->
+    <div id="detail" class="panel detail-panel hidden">
+      <button id="fermer-detail" class="link-btn">&larr; Retour a la liste</button>
+      <h2 id="detail-titre"></h2>
+      <div id="detail-infos"></div>
+      <h3>Historique</h3>
+      <ol id="detail-historique" class="historique"></ol>
+    </div>
+  </main>
+
+  <footer class="footer"><p>US-02 - Suivre sa demande</p></footer>
+  <script src="/mes-demandes.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "smartcampus-ai",
+  "version": "0.1.0",
+  "description": "SmartCampus AI - gestion centralisee des incidents du campus (signalement, suivi, assistant IA, pilotage)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "smartcampus",
+    "express",
+    "incidents",
+    "campus"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.651.0",
+    "express": "^4.21.2"
+  }
+}
