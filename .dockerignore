@@ -1,0 +1,12 @@
+# Fichiers a NE PAS copier dans l'image Docker (comme .gitignore mais pour Docker)
+node_modules
+npm-debug.log*
+.git
+.gitignore
+*.log
+.env
+.env.*
+.DS_Store
+Dockerfile
+.dockerignore
+README.md
