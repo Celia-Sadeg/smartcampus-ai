@@ -113,16 +113,17 @@ async function repondre(question) {
     return { reponse: 'Posez-moi une question sur le campus.', origine: 'systeme', source: null };
   }
 
-  // On tente Bedrock seulement si des identifiants AWS semblent presents
-  const aDesCredentials =
-    process.env.AWS_ACCESS_KEY_ID || process.env.AWS_PROFILE || process.env.AWS_SESSION_TOKEN;
+  // On tente Bedrock par defaut. Sur EC2, les droits viennent du role IAM
+  // (recuperes automatiquement par le SDK). On peut desactiver via USE_BEDROCK=false.
+  const bedrockDesactive = process.env.USE_BEDROCK === 'false';
 
-  if (aDesCredentials) {
+  if (!bedrockDesactive) {
     try {
       const texte = await reponseBedrock(question);
       return { reponse: texte, origine: 'Amazon Bedrock', source: 'Base de connaissances' };
     } catch (err) {
-      // En cas d'erreur Bedrock (pas de droits, SDK absent...), on retombe sur la FAQ
+      // En cas d'erreur Bedrock (pas de droits, SDK absent, modele non active...),
+      // on retombe sur la FAQ locale pour ne jamais bloquer.
       console.warn('Bedrock indisponible, bascule FAQ locale :', err.message);
     }
   }
